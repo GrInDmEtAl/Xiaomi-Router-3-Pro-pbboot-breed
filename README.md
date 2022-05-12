@@ -1,3 +1,6 @@
+I have xiaomi R3Pro ,nand micron with pbboot ,working 100% flash factory-breed-pbboot in ,pbboot page recovery
+
+
 ![OpenWrt logo](include/logo.png)
 
 OpenWrt Project is a Linux operating system targeting embedded devices. Instead
