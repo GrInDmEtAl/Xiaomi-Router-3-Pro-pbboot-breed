@@ -1483,10 +1483,12 @@ define Device/xiaomi_mi-router-3-pro
   IMAGE_SIZE := 255488k
   DEVICE_VENDOR := Xiaomi
   DEVICE_MODEL := Mi Router 3 Pro
-  IMAGES += factory.bin
+  IMAGES += kernel1.bin rootfs0.bin pbboot-factory.bin factory.bin
   IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
   IMAGE/factory.bin := append-kernel | pad-to $$(KERNEL_SIZE) | append-ubi | \
 	check-size
+  IMAGE/kernel1.bin := append-kernel
+  IMAGE/rootfs0.bin := append-ubi | check-size
   DEVICE_PACKAGES := kmod-mt7615e kmod-mt7615-firmware kmod-usb3 \
 	kmod-usb-ledtrig-usbport uboot-envtools
   SUPPORTED_DEVICES += xiaomi,mir3p
