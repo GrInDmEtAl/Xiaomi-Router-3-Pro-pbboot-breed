@@ -1439,6 +1439,8 @@ TARGET_DEVICES += winstars_ws-wn583a6
 
 define Device/xiaomi_nand_separate
   $(Device/dsa-migration)
+  DEVICE_COMPAT_VERSION := 1.0
+  DEVICE_COMPAT_MESSAGE := Config is compat with swconfig
   $(Device/uimage-lzma-loader)
   DEVICE_VENDOR := Xiaomi
   DEVICE_PACKAGES := uboot-envtools
@@ -1446,10 +1448,14 @@ define Device/xiaomi_nand_separate
   PAGESIZE := 2048
   KERNEL_SIZE := 4096k
   UBINIZE_OPTS := -E 5
-  IMAGES += kernel1.bin rootfs0.bin
+  IMAGES += kernel1.bin rootfs0.bin breed-factory.bin factory.bin
   IMAGE/kernel1.bin := append-kernel
   IMAGE/rootfs0.bin := append-ubi | check-size
   IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
+  IMAGE/factory.bin := append-kernel | pad-to $$(KERNEL_SIZE) | append-ubi | check-size
+  IMAGE/breed-factory.bin := append-kernel | pad-to $$(KERNEL_SIZE) | \
+			     append-kernel | pad-to $$(KERNEL_SIZE) | \
+			     append-ubi | check-size
 endef
 
 define Device/xiaomi_mi-router-3g
