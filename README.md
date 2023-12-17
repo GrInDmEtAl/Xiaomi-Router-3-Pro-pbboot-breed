@@ -1,3 +1,8 @@
+Fixed BOOT PB 
+IMAGES += kernel1.bin rootfs0.bin breed-factory.bin factory.bin
+
+
+
 I have xiaomi R3Pro ,nand micron with pbboot ,working 100% flash factory-breed-pbboot in ,pbboot page recovery
 
 
